@@ -23,20 +23,23 @@ class GroupListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         
-        groupsTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         groupsTableView.delegate = self
         groupsTableView.dataSource = self
+        groupsTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         groupsTableView.addSubview(refreshControl)
-        //        dataSource = realmManger.getGroups()
+//                dataSource = realmManger.getGroups()
         matchRealm()
+        realmManger.updateGroups()
         groupsTableView.reloadData()
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
-        makeGroupsRequest()
+//        makeGroupsRequest()
+        realmManger.updateGroups()
         groupsTableView.reloadData()
         refreshControl.endRefreshing()
     }
@@ -74,7 +77,7 @@ class GroupListViewController: UIViewController {
             URLQueryItem(name: "v", value: networkConstants.versionAPI),
             URLQueryItem(name: "access_token", value: SessionData.instance.token)
         ]
-        
+
         let request = URLRequest(url: urlComponents.url!)
         URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             do {
@@ -82,12 +85,12 @@ class GroupListViewController: UIViewController {
                 let fetchedResponse = try JSONDecoder().decode(VKGroupsResponse.self, from: data)
                 let groups = fetchedResponse.response?.items
                 print(groups)
-                
+
                 DispatchQueue.main.async {
                     self?.realmManger.saveGroups(data: Array(groups!))
                     self?.groupsTableView.reloadData()
                 }
-                
+
             } catch {
                 print(error)
             }

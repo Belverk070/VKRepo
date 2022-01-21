@@ -11,6 +11,16 @@ import Realm
 
 class RealmManager {
     
+    private var networkService = NetworkService()
+    
+    let operationQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.name = "operationQueue"
+        queue.qualityOfService = .utility
+        return queue
+    }()
+    
+    private let queue = OperationQueue()
     let realm = try! Realm()
     
     func saveFriends(data: [Friend]) {
@@ -43,6 +53,25 @@ class RealmManager {
     func getGroups() -> [Group] {
         let listGroup = realm.objects(Group.self)
         return Array(listGroup)
+    }
+    
+    func updateGroups() {
+        let request = networkService.getURLGroups()
+        let getData = GetDataOperation(urlRequest: request!)
+        operationQueue.addOperation(getData)
+        print("GET DATA OK")
+        
+        let parseData = ParseDataOperation()
+        parseData.addDependency(getData)
+        operationQueue.addOperation(parseData)
+        print("PARSE DATA OK")
+        
+        let saveData = SaveDataOperation()
+        saveData.addDependency(parseData)
+        operationQueue.addOperation(saveData)
+        
+        print("SAVE DATA OK")
+        
     }
     
 }
