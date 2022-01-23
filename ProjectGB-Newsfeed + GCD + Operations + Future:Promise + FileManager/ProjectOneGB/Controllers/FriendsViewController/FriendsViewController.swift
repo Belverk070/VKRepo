@@ -19,6 +19,7 @@ class FriendsViewController: UIViewController {
     var notificationToken: NotificationToken?
     var dataSource: Results<Friend>?
     let refreshControl = UIRefreshControl()
+    private var imageService: PhotoService?
     let reuseIdentifierCustom = "reuseIdentifierCustom"
     let fromFriendsToGallery = "fromFriendsToGallery"
     
@@ -30,6 +31,7 @@ class FriendsViewController: UIViewController {
         friendsTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         friendsTableView.delegate = self
         friendsTableView.dataSource = self
+        imageService = PhotoService(container: friendsTableView)
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         friendsTableView.addSubview(refreshControl)
@@ -135,12 +137,12 @@ extension FriendsViewController: UITableViewDataSource, UITableViewDelegate, UIS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCustom, for: indexPath) as? CustomTableViewCell else {return UITableViewCell()}
-        cell.configure(friend: dataSource![indexPath.row], completion: { [weak self] myfriend in
+        guard let urlImage = dataSource?[indexPath.row].photo100 else { return UITableViewCell() }
+        let image = imageService?.photo(atIndexPath: indexPath, byURL: urlImage)
+        cell.configure(image, friend: dataSource![indexPath.row], completion: { [weak self] myfriend in
             guard let self = self else {return}
             self.performSegue(withIdentifier: self.fromFriendsToGallery, sender: myfriend)
-        }
-        )
-        
+        })
         return cell
     }
 }

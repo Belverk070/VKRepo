@@ -32,7 +32,15 @@ class CustomTableViewCell: UITableViewCell {
         friend = nil
     }
     
-    func configure(friend: Friend, completion: ((Friend) -> Void)?) {
+    //    func configure(friend: Friend, completion: ((Friend) -> Void)?) {
+    //        self.completion = completion
+    //        self.friend = friend
+    //        let url = URL(string: friend.photo100)
+    //        avatarImageView.kf.setImage(with: url)
+    //        titleLable.text = friend.firstName + " " + friend.lastName
+    //    }
+    
+    func configure(_ image: UIImage?, friend: Friend, completion: ((Friend) -> Void)?) {
         self.completion = completion
         self.friend = friend
         let url = URL(string: friend.photo100)
@@ -40,12 +48,17 @@ class CustomTableViewCell: UITableViewCell {
         titleLable.text = friend.firstName + " " + friend.lastName
     }
     
-    
-    func configure(group: Group) {
-        let url = URL(string: group.photo100)
-        avatarImageView.kf.setImage(with: url)
+    func configure(_ image: UIImage?, group: Group) {
+        avatarImageView.image = image
         titleLable.text = group.name
     }
+    
+    
+    //    func configure(group: Group) {
+    //        let url = URL(string: group.photo100)
+    //        avatarImageView.kf.setImage(with: url)
+    //        titleLable.text = group.name
+    //    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

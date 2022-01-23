@@ -11,6 +11,8 @@ import UIKit
 class NewsfeedViewController: UIViewController {
     
     private var news: [NewsModel] = []
+    private var imageService: PhotoService?
+    
     var networkConstants = NetworkConstants()
     var service = NetworkService()
     let newsHeaderTableViewReuseIdentifierCustom = "headerTableViewReuseIdentifierCustom"
@@ -27,16 +29,18 @@ class NewsfeedViewController: UIViewController {
         newsTableView.register(UINib(nibName: "NewsImageTableViewCell", bundle: nil), forCellReuseIdentifier: newsImageTableViewReuseIdentifierCustom)
         newsTableView.register(UINib(nibName: "NewsContentTableViewCell", bundle: nil), forCellReuseIdentifier: newsContentTableViewReuseIdentifierCustom)
         newsTableView.register(UINib(nibName: "NewsActivityTableViewCell", bundle: nil), forCellReuseIdentifier: newsActivityTableViewReuseIdentifierCustom)
+        imageService = PhotoService(container: newsTableView)
         newsTableView.delegate = self
         newsTableView.dataSource = self
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
         newsTableView.addSubview(refreshControl)
+        newsRequest()
         newsTableView.reloadData()
         
     }
     
-    @objc private func refresh(sender: UIRefreshControl) {
+    func newsRequest() {
         service.getUrl()
             .get({ url in
                 print(url)
@@ -53,7 +57,6 @@ class NewsfeedViewController: UIViewController {
             }
         print("HERE IS NEWS COUNT: \(self.news.count)")
         refreshControl.endRefreshing()
-        
         //        service.makeNewsRequest { news in
         //                    self.news = news
         //                    print(news)
@@ -62,6 +65,13 @@ class NewsfeedViewController: UIViewController {
         //                    print(error)
         //                }
         
+    }
+    
+    
+    @objc private func refresh(sender: UIRefreshControl) {
+        newsRequest()
+        newsTableView.reloadData()
+        refreshControl.endRefreshing()
     }
 }
 
@@ -91,11 +101,9 @@ extension NewsfeedViewController: UITableViewDataSource, UITableViewDelegate {
             cell.configure(text)
             return cell
         case 2: let cell = newsTableView.dequeueReusableCell(withIdentifier: newsImageTableViewReuseIdentifierCustom, for: indexPath) as! NewsImageTableViewCell
-            //            let url = news[indexPath.section].photosURL?.first
-            //                        cell.configure(url)
-            //  не удалось загрузить изображение новости, ловлю Thread 1: Fatal error: Unexpectedly found nil while implicitly unwrapping an Optional value, хотя в NewsHeader аналогичный метод сработал
-            //            guard let urlImage = news[indexPath.section].photosURL?.first else { return UITableViewCell() }
-            //            cell.configure(urlImage)
+            guard let urlImage = news[indexPath.section].photosURL?.last else { return UITableViewCell() }
+            let image = imageService?.photo(atIndexPath: indexPath, byURL: urlImage)
+            cell.configure(image)
             return cell
         case 3:
             let cell = newsTableView.dequeueReusableCell(withIdentifier: newsActivityTableViewReuseIdentifierCustom, for: indexPath) as! NewsActivityTableViewCell
