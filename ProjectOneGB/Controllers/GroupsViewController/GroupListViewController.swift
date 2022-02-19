@@ -32,21 +32,31 @@ class GroupListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
         imageService = PhotoService(container: tableView)
         tableView.registerWithNib(registerClass: CustomTableViewCell.self)
-        setupRefreshControl()
         matchRealm()
-        realmManger.updateGroups()
         tableView.reloadData()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupRefreshControl()
+        setupSearchController()
+        tableView.reloadData()
+    }
+    
+    
+    //    MARK: Func
+    private func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search?"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
     }
     
     private func setupRefreshControl() {
@@ -58,6 +68,7 @@ class GroupListViewController: UIViewController {
     
     @objc private func refresh(sender: UIRefreshControl) {
         makeGroupsRequest()
+        realmManger.updateGroups()
         tableView.reloadData()
         refreshControl.endRefreshing()
     }
@@ -114,6 +125,8 @@ class GroupListViewController: UIViewController {
     }
 }
 
+
+//MARK: DataSource and Delegate
 extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {

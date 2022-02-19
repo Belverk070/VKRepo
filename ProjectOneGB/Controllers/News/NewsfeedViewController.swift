@@ -22,18 +22,19 @@ class NewsfeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        newsTableView.delegate = self
+        newsTableView.dataSource = self
+        newsTableView.prefetchDataSource = self
+        
         newsTableView.registerWithNib(registerClass: NewsHeaderTableViewCell.self)
         newsTableView.registerWithNib(registerClass: NewsContentTableViewCell.self)
         newsTableView.registerWithNib(registerClass: NewsImageTableViewCell.self)
         newsTableView.registerWithNib(registerClass: NewsActivityTableViewCell.self)
         
-        newsTableView.delegate = self
-        newsTableView.dataSource = self
-        newsTableView.prefetchDataSource = self
         self.newsTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         imageService = PhotoService(container: newsTableView)
         newsRequest()
-        setupRefreshControl()
         newsTableView.reloadData()
     }
     

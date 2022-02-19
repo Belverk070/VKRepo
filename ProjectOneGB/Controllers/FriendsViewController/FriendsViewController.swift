@@ -10,7 +10,7 @@ import RealmSwift
 import Kingfisher
 
 class FriendsViewController: UIViewController {
-
+    
     private let searchController = UISearchController(searchResultsController: nil)
     private var filteredFriends: Results<Friend>!
     private var searchBarIsEmpty: Bool {
@@ -33,27 +33,34 @@ class FriendsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerWithNib(registerClass: CustomTableViewCell.self)
+        
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.registerWithNib(registerClass: CustomTableViewCell.self)
         imageService = PhotoService(container: tableView)
-        setupRefreshControll()
         matchRealm()
         tableView.reloadData()
-        
-        
-//        TODO: Search controller
-//        Setup
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupRefreshControl()
+        setupSearchController()
+        tableView.reloadData()
+    }
+    
+    //    MARK: Func
+    
+    private func setupSearchController() {
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search?"
         navigationItem.searchController = searchController
         definesPresentationContext = true
-        
     }
     
-    private func setupRefreshControll() {
+    private func setupRefreshControl() {
         refreshControl.attributedTitle = NSAttributedString(string: "Обновление")
         refreshControl.tintColor = .black
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
@@ -106,7 +113,7 @@ class FriendsViewController: UIViewController {
                 let fetchedResponse = try JSONDecoder().decode(VKFriendResponse.self, from: data)
                 let friends = fetchedResponse.response?.items
                 //                print(friends)
-//                print(SessionData.instance.token)
+                //                print(SessionData.instance.token)
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                     self?.realmManger.saveFriends(data: Array(friends!))
@@ -120,6 +127,7 @@ class FriendsViewController: UIViewController {
 
 
 //MARK: DataSource and Delegate
+
 extension FriendsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
@@ -149,7 +157,7 @@ extension FriendsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configure(image, friend: friend, completion: { [weak self] myfriend in
             guard let self = self else {return}
             SessionData.instance.userId = self.friendResults?[indexPath.row].id
-//            print(SessionData.instance.userId)
+            //            print(SessionData.instance.userId)
             self.performSegue(withIdentifier: self.fromFriendsToGallery, sender: myfriend)
         })
         return cell

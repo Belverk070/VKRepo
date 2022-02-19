@@ -6,7 +6,7 @@
 //
 
 
-import Foundation
+import UIKit
 
 struct VKFriendsPhotoResponse: Codable {
     var response: VKFriendsPhotoResponseData

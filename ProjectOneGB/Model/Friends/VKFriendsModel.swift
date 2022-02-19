@@ -5,10 +5,8 @@
 //  Created by Василий Метлин on 07.12.2021.
 //
 
-import Foundation
+import UIKit
 import RealmSwift
-import Realm
-
 
 @objcMembers
 class VKFriendResponse: Object, Codable {

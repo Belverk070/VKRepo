@@ -176,7 +176,7 @@
             </objects>
             <point key="canvasLocation" x="1558" y="850"/>
         </scene>
-        <!--My friends-->
+        <!--Друзья-->
         <scene sceneID="u1R-xV-5cL">
             <objects>
                 <viewController id="hsX-gc-GWH" customClass="FriendsViewController" customModule="GeekBrainsProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -188,13 +188,14 @@
                                 <rect key="frame" x="0.0" y="88" width="428" height="755"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="40" id="2pY-EO-bmG">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="40" id="2pY-EO-bmG">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2pY-EO-bmG" id="5Dp-tB-4nI">
                                             <rect key="frame" x="0.0" y="0.0" width="428" height="40"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -208,7 +209,7 @@
                             <constraint firstItem="lMg-M0-gEj" firstAttribute="trailing" secondItem="LIo-nE-b7n" secondAttribute="trailing" id="Vlm-n1-FWX"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My friends" id="mvp-6v-AeA">
+                    <navigationItem key="navigationItem" title="Друзья" id="mvp-6v-AeA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lc1-pC-3OA"/>
                     </navigationItem>
                     <connections>
@@ -220,7 +221,7 @@
             </objects>
             <point key="canvasLocation" x="3519" y="171"/>
         </scene>
-        <!--My groups-->
+        <!--Группы-->
         <scene sceneID="gcd-GJ-Vpf">
             <objects>
                 <viewController id="SFj-R9-ghc" customClass="GroupListViewController" customModule="GeekBrainsProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -232,13 +233,14 @@
                                 <rect key="frame" x="0.0" y="88" width="428" height="755"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="8gG-P9-CVZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="8gG-P9-CVZ">
                                         <rect key="frame" x="0.0" y="44.666666030883789" width="428" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8gG-P9-CVZ" id="ahd-KM-jM7">
                                             <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -252,7 +254,7 @@
                             <constraint firstItem="gzd-1X-oiY" firstAttribute="top" secondItem="4P2-V0-f24" secondAttribute="top" id="vtQ-P5-tNr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My groups" id="f4i-8a-yis">
+                    <navigationItem key="navigationItem" title="Группы" id="f4i-8a-yis">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0LK-j6-2MR">
                             <connections>
                                 <segue destination="ssx-oM-86J" kind="show" id="Njw-5T-Yl7"/>
@@ -267,7 +269,7 @@
             </objects>
             <point key="canvasLocation" x="3519" y="850"/>
         </scene>
-        <!--News-->
+        <!--Новости-->
         <scene sceneID="gHT-Wb-oFP">
             <objects>
                 <viewController id="ukC-Ab-KZ6" customClass="NewsfeedViewController" customModule="GeekBrainsProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -303,7 +305,7 @@
                             <constraint firstItem="5CO-hp-Ppw" firstAttribute="bottom" secondItem="ifO-kf-wAB" secondAttribute="bottom" id="d2F-RG-jJG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="News" id="yS0-AI-dtZ"/>
+                    <navigationItem key="navigationItem" title="Новости" id="yS0-AI-dtZ"/>
                     <connections>
                         <outlet property="newsTableView" destination="ifO-kf-wAB" id="cEV-xt-PWT"/>
                     </connections>
@@ -312,7 +314,7 @@
             </objects>
             <point key="canvasLocation" x="3519" y="1576"/>
         </scene>
-        <!--Groups-->
+        <!--Группы-->
         <scene sceneID="axd-QF-6wm">
             <objects>
                 <viewController id="ssx-oM-86J" customClass="AllGroupsViewController" customModule="GeekBrainsProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -344,7 +346,7 @@
                             <constraint firstItem="aeP-A3-t2p" firstAttribute="leading" secondItem="p3a-3f-keL" secondAttribute="leading" id="pgy-jz-1nU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Groups" id="88y-aD-phg"/>
+                    <navigationItem key="navigationItem" title="Группы" id="88y-aD-phg"/>
                     <connections>
                         <outlet property="tableView" destination="aeP-A3-t2p" id="kyg-dT-86C"/>
                         <segue destination="dXJ-ry-0Xo" kind="unwind" identifier="fromAllGroupsToMyGroups" unwindAction="unwindSegueToMyGroupWithSegue:" id="RQl-Ua-cfb"/>
@@ -399,6 +401,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="W48-4T-Bkf">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -418,6 +423,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rza-WZ-hL4">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -437,6 +445,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OhK-id-2Sf">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="20"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
