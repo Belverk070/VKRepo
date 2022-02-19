@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleAspectFill" selectionStyle="default" indentationWidth="10" rowHeight="221" id="KGk-i7-Jjw" customClass="NewsImageTableViewCell" customModule="GeekBrainsProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="224" height="221"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="224" height="221"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J0c-cT-fpz">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.text.image" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jBL-S5-S0j">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="4j6-jM-wJD"/>
+                                    <constraint firstAttribute="width" constant="200" id="aeF-Te-NTN"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jBL-S5-S0j" firstAttribute="top" secondItem="J0c-cT-fpz" secondAttribute="top" id="GIp-dj-Xtz"/>
+                            <constraint firstItem="jBL-S5-S0j" firstAttribute="leading" secondItem="J0c-cT-fpz" secondAttribute="leading" id="HOf-gS-ue7"/>
+                            <constraint firstAttribute="trailing" secondItem="jBL-S5-S0j" secondAttribute="trailing" id="MTe-mj-Zeh"/>
+                            <constraint firstAttribute="trailing" secondItem="jBL-S5-S0j" secondAttribute="trailing" id="Rb7-42-SHA"/>
+                            <constraint firstAttribute="bottom" secondItem="jBL-S5-S0j" secondAttribute="bottom" id="T5r-d0-JV0"/>
+                            <constraint firstItem="jBL-S5-S0j" firstAttribute="leading" secondItem="J0c-cT-fpz" secondAttribute="leading" id="U4L-rN-ozM"/>
+                            <constraint firstItem="jBL-S5-S0j" firstAttribute="top" secondItem="J0c-cT-fpz" secondAttribute="top" id="Xmp-9U-DZy"/>
+                            <constraint firstAttribute="bottom" secondItem="jBL-S5-S0j" secondAttribute="bottom" id="YVB-v1-lZT"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="J0c-cT-fpz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Zch-Ol-G8T"/>
+                    <constraint firstAttribute="bottom" secondItem="J0c-cT-fpz" secondAttribute="bottom" id="ech-zZ-lLU"/>
+                    <constraint firstItem="J0c-cT-fpz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="wKZ-CO-IfY"/>
+                    <constraint firstAttribute="trailing" secondItem="J0c-cT-fpz" secondAttribute="trailing" id="whY-wt-8Mz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="NewsContentImage" destination="jBL-S5-S0j" id="taz-fo-bqu"/>
+            </connections>
+            <point key="canvasLocation" x="62.318840579710148" y="191.18303571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="doc.text.image" catalog="system" width="115" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
