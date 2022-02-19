@@ -16,6 +16,7 @@ class GroupListViewController: UIViewController {
     var notificationToken: NotificationToken?
     var dataSource: Results<Group>?
     let refreshControl = UIRefreshControl()
+    private var imageService: PhotoService?
     let reuseIdentifierCustom = "reuseIdentifierCustom"
     let fromAllGroupsToMyGroupsSegue = "fromAllGroupsToMyGroups"
     
@@ -27,6 +28,7 @@ class GroupListViewController: UIViewController {
         
         groupsTableView.delegate = self
         groupsTableView.dataSource = self
+        imageService = PhotoService(container: groupsTableView)
         groupsTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifierCustom)
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(self.refresh), for: .valueChanged)
@@ -105,7 +107,9 @@ extension GroupListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierCustom, for: indexPath) as? CustomTableViewCell else {return UITableViewCell()}
-        cell.configure(group: dataSource![indexPath.row])
+        guard let urlImage = dataSource?[indexPath.row].photo100 else { return UITableViewCell() }
+        let image = imageService?.photo(atIndexPath: indexPath, byURL: urlImage)
+        cell.configure(image, group: dataSource![indexPath.row])
         return cell
     }
     

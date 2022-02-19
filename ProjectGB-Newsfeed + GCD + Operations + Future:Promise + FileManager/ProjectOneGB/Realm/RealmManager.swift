@@ -56,22 +56,20 @@ class RealmManager {
     }
     
     func updateGroups() {
-        let request = networkService.getURLGroups()
-        let getData = GetDataOperation(urlRequest: request!)
+        guard let request = networkService.getURLGroups() else { return }
+        let getData = GetDataOperation(urlRequest: request)
+        let parseData = ParseDataOperation()
+        let saveData = SaveDataOperation()
+        
+        parseData.addDependency(getData)
+        saveData.addDependency(parseData)
+        
         operationQueue.addOperation(getData)
         print("GET DATA OK")
-        
-        let parseData = ParseDataOperation()
-        parseData.addDependency(getData)
         operationQueue.addOperation(parseData)
         print("PARSE DATA OK")
-        
-        let saveData = SaveDataOperation()
-        saveData.addDependency(parseData)
         operationQueue.addOperation(saveData)
-        
         print("SAVE DATA OK")
-        
     }
     
 }
