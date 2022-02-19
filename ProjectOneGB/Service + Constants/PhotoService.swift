@@ -5,9 +5,9 @@
 //  Created by Василий Метлин on 23.01.2022.
 //
 
-import Foundation
-import Alamofire
 import UIKit
+import Alamofire
+
 
 class PhotoService {
     

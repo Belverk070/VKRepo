@@ -5,7 +5,7 @@
 //  Created by Василий Метлин on 21.01.2022.
 //
 
-import Foundation
+import UIKit
 
 class AsyncOperations: Operation {
     enum State: String {

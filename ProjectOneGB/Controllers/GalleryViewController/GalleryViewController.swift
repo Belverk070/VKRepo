@@ -6,7 +6,6 @@
 //
 import UIKit
 import Kingfisher
-import Realm
 import RealmSwift
 
 class GalleryViewController: UIViewController {

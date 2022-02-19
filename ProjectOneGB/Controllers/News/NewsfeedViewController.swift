@@ -5,7 +5,6 @@
 //  Created by Василий Метлин on 12.01.2022.
 //
 
-import Foundation
 import UIKit
 
 class NewsfeedViewController: UIViewController {

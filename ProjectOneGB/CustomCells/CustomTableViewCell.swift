@@ -13,7 +13,6 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLable: UILabel!
     @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var likeView: likeCounter!
     
     var completion: ((Friend) -> Void)?
     var friend: Friend?
