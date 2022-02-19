@@ -62,7 +62,6 @@
 		01BD5B7E27C020C80036ECFF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 01BD5B7D27C020C80036ECFF /* Alamofire */; };
 		01C14D0C279C07280021648A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 01C14D0B279C07280021648A /* Kingfisher */; };
 		01C14D46279C0BA10021648A /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 01C14D45279C0BA10021648A /* PromiseKit */; };
-		01FD9F8B276A747D005373F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FD9F8A276A747D005373F3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -118,7 +117,6 @@
 		01BCFF812737D9E900A1C1F1 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
 		01BCFF832737DB8200A1C1F1 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		01BCFF852737DD1E00A1C1F1 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
-		01FD9F8A276A747D005373F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,19 +314,18 @@
 		019C0B162710C601000178C8 /* ProjectOneGB */ = {
 			isa = PBXGroup;
 			children = (
+				019C0B252710C602000178C8 /* Info.plist */,
+				019C0B172710C601000178C8 /* AppDelegate.swift */,
+				019C0B192710C601000178C8 /* SceneDelegate.swift */,
+				019C0B1D2710C601000178C8 /* Main.storyboard */,
+				019C0B222710C602000178C8 /* LaunchScreen.storyboard */,
+				019C0B202710C602000178C8 /* Assets.xcassets */,
 				01620B6527AADCD2006B0FB4 /* Core */,
 				01006603278F461100C7420F /* Depricated */,
 				014FE7D1279ABF5F00A5EC25 /* Operations */,
 				01006600278F45E300C7420F /* SessionData */,
 				010065FF278F45CA00C7420F /* Service + Constants */,
 				010065FE278F45AE00C7420F /* Realm */,
-				019C0B1D2710C601000178C8 /* Main.storyboard */,
-				019C0B222710C602000178C8 /* LaunchScreen.storyboard */,
-				019C0B172710C601000178C8 /* AppDelegate.swift */,
-				019C0B192710C601000178C8 /* SceneDelegate.swift */,
-				01FD9F8A276A747D005373F3 /* GoogleService-Info.plist */,
-				019C0B202710C602000178C8 /* Assets.xcassets */,
-				019C0B252710C602000178C8 /* Info.plist */,
 				0120BBA0271C3EF3007CB3F4 /* Model */,
 				0120BBAA271C44B7007CB3F4 /* Controllers */,
 				0120BBA5271C41A4007CB3F4 /* CustomCells */,
@@ -452,7 +449,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				019C0B242710C602000178C8 /* LaunchScreen.storyboard in Resources */,
-				01FD9F8B276A747D005373F3 /* GoogleService-Info.plist in Resources */,
 				0113E0542795DEC1006B003D /* NewsImageTableViewCell.xib in Resources */,
 				01B2732C279481E00092763E /* NewsActivityTableViewCell.xib in Resources */,
 				01B27328279481D00092763E /* NewsContentTableViewCell.xib in Resources */,
